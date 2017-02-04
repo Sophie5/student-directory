@@ -19,6 +19,7 @@ def input_students
      puts "Now we have #{students.count} student".center(40)
    elsif answer == "yes" && students.count > 0
      new_count = students.count + 1
+     students << {name: name.to_sym, cohort: cohort.to_sym}
      puts "Now we have #{new_count} students".center(40)
    else
      puts "please re-enter the information".center(40)
