@@ -1,0 +1,62 @@
+  $stdout.sync=true
+def input_students
+ puts  "Please enter the name of the students". center(40)
+ name = gets.chomp
+ puts  "Please enter the cohort". center(40)
+ cohort = gets.chomp
+ # creates an empty array
+ students = []
+
+ while !name.empty? || !cohort.empty? do
+   name="unknown" if name.empty?
+   cohort = "unknown" if cohort.empty?
+   puts "you entered #{name} and #{cohort}".center(40)
+   puts "Is this infomation correct if please type yes/no".center(40)
+   puts "To finish, just hit return twice".center(40)
+   answer =gets.chomp
+   if answer == "yes"
+    students << {name: name.to_sym, cohort: cohort.to_sym}
+    puts "Now we have #{students.count} students".center(40)
+   else
+    puts "please re-enter the information".center(40)
+   end
+  puts "please enter the name of the students".center(40)
+  name =gets.chomp
+  puts "please enter the name of the cohorts".center(40)
+  cohort = gets.chomp
+
+  end
+# return students
+ students
+end
+
+ def print_header
+
+  puts "The students of Villains Academy".center(40)
+
+  puts "-------------".center(40)
+
+ end
+
+def print(students)
+  puts "please enter the cohort you would like to search for".center(40)
+  answer =gets.chomp
+  students.map do |student| if "#{student[:cohort]}" == answer
+    until "#{student[:name]}".length == 0
+     puts  "#{student[:name]} (#{student[:cohort]} cohort)".center(40)
+    break
+    end
+   end
+  end
+end
+
+ def print_footer(names)
+
+  puts "Overall, we have #{names.count} great students ".center(40)
+
+end
+students = input_students
+# nothing happens until we call these methods
+print_header
+print(students)
+print_footer(students)
