@@ -25,12 +25,15 @@ def input_students
      puts "Now we have #{@students.count} students"
      name =STDIN.gets.chomp
   end
+  puts "input entered succesfully"
  end
 
 def show_students
+puts "all the data on students "
       print_header
       print_students
       print_footer
+
 end
 
 def process (selection)
@@ -69,7 +72,7 @@ def save_students
   @students.each do |student|
      file.puts student_data = [student[:name], student[:cohort]].join(",")
  end
-
+puts "save succesfull"
  file.close
 end
 
@@ -79,7 +82,7 @@ def load_students(filename = "students.csv")
    name, cohort = line.chomp.split(',')
   @students << {name: name, cohort: cohort.to_sym}
 end
-
+puts "sucessfully loaded file"
   file.close
 end
 
