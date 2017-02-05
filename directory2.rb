@@ -11,8 +11,8 @@ end
 def print_menu
     puts "1. Input the students"
     puts "2. Show the students"
-    puts "3. Save the list to students.csv"
-    puts "4. Load the list from students.csv"
+    puts "3. Save the list (default student.csv)"
+    puts "4. Load the list (default students.csv)"
     puts "9. Exit"
 end
 def input_students
@@ -73,14 +73,14 @@ def load_students(filename = "students.csv")
   filename = gets.chomp
   CSV.foreach(filename) do |line|
   @students << {name: line[0], cohort: line[1]}
-end
-puts "sucessfully loaded file"
+  end
+ puts "sucessfully loaded file"
 end
 
 def try_load_students
 filename = ARGV.first
     filename = "students.csv" if filename.nil?
-   if File.exists?(filename) # if it exits
+   if File.exists?(filename)
       CSV.foreach(filename) do |line|
      @students << { name: line[0],cohort: line[1]}
     end
