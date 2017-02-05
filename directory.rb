@@ -142,17 +142,17 @@ def save_students
 
   savefile = gets.chomp
 
-  file = File.open( savefile,"w")
+  File.open( savefile,"w") do |file|
 
   @students.each do |student|
 
      file.puts student_data = [student[:name], student[:cohort]].join(",")
-
+  end
  end
 
 puts "save succesfull"
 
- file.close
+ #file.close
 
 end
 
@@ -162,16 +162,13 @@ def load_students(filename = "students.csv")
 
   puts "what file would you like to load?"
   filename = gets.chomp
-  file = File.open(filename,"r")
+  File.open(filename,"r") do |file|
   file.readlines.each do |line|
    name, cohort = line.chomp.split(',')
   @students << {name: name, cohort: cohort.to_sym}
-
+ end
 end
-
 puts "sucessfully loaded file"
-
-  file.close
 
 end
 
