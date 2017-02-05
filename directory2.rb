@@ -23,7 +23,6 @@ def input_students
      puts "Now we have #{@students.count} students"
      name =STDIN.gets.chomp
   end
-  puts "input entered succesfully"
  end
 def show_students
 puts "all the data on students "
