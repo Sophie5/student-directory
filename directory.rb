@@ -182,14 +182,14 @@ filename = ARGV.first
 
    if File.exists?(filename) # if it exits
 
-     file = File.open(filename,"r")
+      File.open(filename,"r") do |file|
 
      file.readlines.each do |line|
 
       name, cohort = line.chomp.split(',')
 
      @students << {name: name, cohort: cohort.to_sym}
-
+    end
     end
     puts "Loaded #{@students.count} from #{filename}"
 
